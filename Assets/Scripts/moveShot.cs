@@ -11,6 +11,9 @@ public class moveShot : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D coll) {
+		if (coll.gameObject.CompareTag("meteor")){
+			Destroy (coll.gameObject);
+		}
 		Debug.Log ("hit");
 		Destroy (gameObject);
 	}

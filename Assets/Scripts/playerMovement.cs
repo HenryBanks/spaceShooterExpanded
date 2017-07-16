@@ -19,7 +19,7 @@ public class playerMovement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		var relativeVelocity = transform.InverseTransformDirection (rb.velocity);
-		Debug.Log (relativeVelocity);
+		//Debug.Log (relativeVelocity);
 		if (Input.GetAxis ("Vertical") > 0 && relativeVelocity.y<maxSpeed) {
 			rb.AddForce (transform.up * Input.GetAxis ("Vertical") * engineForce);
 		}
