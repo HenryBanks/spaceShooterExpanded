@@ -18,8 +18,4 @@ public class meteor : MonoBehaviour {
 		Destroy (gameObject);
 	}
 
-	void OnBecameInvisible() {
-		Debug.Log ("Became Invisible");
-		//Destroy (gameObject);
-	}
 }

@@ -12,7 +12,9 @@ public class moveShot : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D coll) {
 		if (coll.gameObject.CompareTag("meteor")){
+			ItemManager.instance.itemList.Remove (coll.gameObject);
 			Destroy (coll.gameObject);
+			playerScore.instance.addScore (10);
 		}
 		Debug.Log ("hit");
 		Destroy (gameObject);

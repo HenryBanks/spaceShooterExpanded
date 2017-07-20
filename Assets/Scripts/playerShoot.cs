@@ -9,6 +9,7 @@ public class playerShoot : MonoBehaviour {
 	public GameObject shotPrefab;
 	public Transform shotFirePoint;
 	public float shotSpeed=50f;
+	public AudioSource shotSound;
 
 	// Use this for initialization
 	void Start () {
@@ -23,6 +24,7 @@ public class playerShoot : MonoBehaviour {
 			timeToNextShot = Time.time + reloadTime;
 			var shot=Instantiate (shotPrefab, shotFirePoint.position,transform.rotation);
 			shot.GetComponent<Rigidbody2D> ().velocity = transform.up * shotSpeed;
+			shotSound.Play ();
 		}
 		
 	}

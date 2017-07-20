@@ -49,6 +49,7 @@ public class TerrainManager : MonoBehaviour {
 	void Update () {
 		if(MaxDistanceFromCenter<Vector3.Distance(Player.position,transform.position)){
 			RedrawMap ();
+			ItemManager.instance.generateItems ();
 		}
 	}
 }

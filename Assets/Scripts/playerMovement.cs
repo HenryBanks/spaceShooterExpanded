@@ -25,4 +25,6 @@ public class playerMovement : MonoBehaviour {
 		}
 		transform.Rotate (Vector3.back, Input.GetAxis ("Horizontal") * rotateSpeed);
 	}
+
+
 }
