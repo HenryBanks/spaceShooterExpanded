@@ -5,6 +5,7 @@ using UnityEngine;
 public class ItemManager : MonoBehaviour {
 	public GameObject meteorPrefab;
 	public GameObject healPrefab;
+	public GameObject enemyPrefab;
 	public int HorizontalTiles = 25;
 	public int VerticalTiles=25;
 	public int Key=1;
@@ -19,7 +20,7 @@ public class ItemManager : MonoBehaviour {
 	public static ItemManager instance;
 
 	public int RandomIntGen(int x, int y){
-		return RandomHelper.Range(x, y, Key, 100);
+		return RandomHelper.Range(x, y, Key, 1000);
 	}
 
 	void deleteMeteors(){
@@ -40,7 +41,7 @@ public class ItemManager : MonoBehaviour {
 			Destroy (tempMeteor);
 		}
 	}
-
+	/*
 	public void RandomItemGen(int x, int y){
 		Vector3 meteorPos = new Vector3 (x + (int)transform.position.x, y + (int)transform.position.y, 0.0f) + new Vector3 ( - HorizontalTiles / 2, - VerticalTiles / 2, 0);
 		if (RandomHelper.Range (x, y, Key, 100)>94) {
@@ -48,11 +49,15 @@ public class ItemManager : MonoBehaviour {
 			itemList.Add (newItem);
 		}
 		else if (RandomHelper.Range (x, y, Key, 100)==94) {
+			GameObject newItem=Instantiate (enemyPrefab, meteorPos, Quaternion.Euler(0.0f,0.0f,0.0f));
+			itemList.Add (newItem);
+		}
+		else if (RandomHelper.Range (x, y, Key, 100)==93) {
 			GameObject newItem=Instantiate (healPrefab, meteorPos, Quaternion.Euler(0.0f,0.0f,Random.Range(0.0f,360.0f)));
 			itemList.Add (newItem);
 		}
 	}
-
+	*/
 	private bool isSpaceClear(Vector3 tileSpace){
 		foreach (GameObject tempItem in itemList){
 			if (tempItem == null) {
@@ -71,6 +76,8 @@ public class ItemManager : MonoBehaviour {
 		
 		var offset = new Vector3 ( - HorizontalTiles / 2, - VerticalTiles / 2, 0);
 		transform.position = new Vector3((int)Player.position.x,(int)Player.position.y,Player.position.z);
+		int posX = (int)transform.position.x;
+		int posY = (int)transform.position.y;
 		StartCoroutine ("deleteMeteors");
 		//deleteMeteors ();
 		for (int x = 0; x < HorizontalTiles; x++) {
@@ -80,10 +87,15 @@ public class ItemManager : MonoBehaviour {
 					if (isSpaceClear (itemPos)) {
 						//Debug.Log (transform.position);
 
-						if (RandomIntGen (x + (int)transform.position.x, y + (int)transform.position.y) > 94) {
+						if (RandomIntGen (x + posX, y + posY) > 940) {
 							GameObject newMeteor = Instantiate (meteorPrefab, itemPos, Quaternion.Euler (0.0f, 0.0f, Random.Range (0.0f, 360.0f)));
 							itemList.Add (newMeteor);
-						} else if (RandomIntGen (x + (int)transform.position.x, y + (int)transform.position.y) == 94) {
+						}
+						else if (RandomIntGen (x + posX, y + posY) >933 && RandomIntGen (x + posX, y + posY) <=940) {
+							GameObject newHeal = Instantiate (enemyPrefab, itemPos, Quaternion.Euler (0.0f, 0.0f, Random.Range (0.0f, 360.0f)));
+							itemList.Add (newHeal);
+						} 
+						else if (RandomIntGen (x + posX, y + posY) >930 && RandomIntGen (x + posX, y + posY) <=933) {
 							GameObject newHeal = Instantiate (healPrefab, itemPos, Quaternion.Euler (0.0f, 0.0f, Random.Range (0.0f, 360.0f)));
 							itemList.Add (newHeal);
 						}
@@ -100,6 +112,7 @@ public class ItemManager : MonoBehaviour {
 
 	void Start () {
 		instance = this;
+		Key = Random.Range (0, 100);
 		itemList = new List<GameObject> ();
 		generateItems ();
 	}

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class playerDamage : MonoBehaviour {
 
@@ -18,14 +19,18 @@ public class playerDamage : MonoBehaviour {
 	public float shieldDuration=2.0f;
 	private float timeToNextShield=0.0f;
 
+	public Text shieldText;
+
 	// Use this for initialization
 	void Start () {
 		currentHealth = maxHealth;
 		shieldRend.enabled = false;
+		InvokeRepeating ("updateShieldText",1.0f, 1.0f);
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		
 		if (Input.GetKeyDown (KeyCode.E)&&Time.time>timeToNextShield) {
 			StartCoroutine ("shieldOn");
 			//shieldOn ();
@@ -33,8 +38,28 @@ public class playerDamage : MonoBehaviour {
 		}
 	}
 
+	void updateShieldText(){
+		if (Time.time < timeToNextShield) {
+			setText (true);
+		} else {
+			setText (false);
+		}
+	}
+
+	void setText(bool recharging){
+		if (recharging) {
+			int countDown =(int) (timeToNextShield - Time.time);
+			string shieldString = countDown.ToString ();
+			string fullString = "Shield: " + shieldString;
+			shieldText.text = fullString;
+		} else {
+			string fullString = "Shield: charged";
+			shieldText.text = fullString;
+		}
+	}
+
 	void OnTriggerEnter2D(Collider2D coll) {
-		if (coll.gameObject.CompareTag("meteor")){
+		if (coll.gameObject.CompareTag("meteor")||coll.gameObject.CompareTag("enemy")){
 			ItemManager.instance.itemList.Remove (coll.gameObject);
 			Destroy (coll.gameObject);
 		}
@@ -67,6 +92,7 @@ public class playerDamage : MonoBehaviour {
 	IEnumerator shieldOn(){
 		isShielded = true;
 		shieldRend.enabled = true;
+
 		yield return new WaitForSeconds(shieldDuration);
 
 		isShielded = false;

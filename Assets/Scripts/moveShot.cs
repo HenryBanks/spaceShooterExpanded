@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class moveShot : MonoBehaviour {
 	
+	public float moveSpeed=0.2f;
 
 	// Use this for initialization
 	void Start () {
-		Destroy (gameObject, 3f);
+		Destroy (gameObject, 15f);
 	}
 
 	void OnTriggerEnter2D(Collider2D coll) {
-		if (coll.gameObject.CompareTag("meteor")){
+		if (coll.gameObject.CompareTag("meteor")||coll.gameObject.CompareTag("enemy")){
 			ItemManager.instance.itemList.Remove (coll.gameObject);
 			Destroy (coll.gameObject);
 			playerScore.instance.addScore (10);
@@ -25,5 +26,6 @@ public class moveShot : MonoBehaviour {
 	}
 
 	void Update(){
+		//transform.Translate (transform.up * moveSpeed * Time.deltaTime);
 	}
 }
