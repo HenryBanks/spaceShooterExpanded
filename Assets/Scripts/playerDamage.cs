@@ -19,6 +19,9 @@ public class playerDamage : MonoBehaviour {
 	public float shieldDuration=2.0f;
 	private float timeToNextShield=0.0f;
 
+	public AudioSource shieldOnSound;
+	public AudioSource shieldOffSound;
+
 	public Text shieldText;
 
 	// Use this for initialization
@@ -92,9 +95,11 @@ public class playerDamage : MonoBehaviour {
 	IEnumerator shieldOn(){
 		isShielded = true;
 		shieldRend.enabled = true;
+		shieldOnSound.Play ();
 
 		yield return new WaitForSeconds(shieldDuration);
 
+		shieldOffSound.Play ();
 		isShielded = false;
 		shieldRend.enabled = false;
 	}
