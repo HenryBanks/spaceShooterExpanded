@@ -85,7 +85,8 @@ public class playerDamage : MonoBehaviour {
 		currentHealth--;
 		//Debug.Log (currentHealth);
 		if (currentHealth <= 0) {
-			Destroy (gameObject);
+			GameManager.instance.RestartGame ();
+			//Destroy (gameObject);
 		}
 		if (0 < currentHealth && currentHealth < 4) {
 			damageRend.sprite = damageSprites [3 - currentHealth];

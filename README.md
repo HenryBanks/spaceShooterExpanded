@@ -4,6 +4,7 @@ HOW TO PLAY
 W boosts forward
 A and D turn
 E activates shield for 2 seconds, 8 second recharge
+holding shift witll double acceleration
 SPACE fires
 
 ADDED
