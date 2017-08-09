@@ -30,4 +30,20 @@ public class upgrades : MonoBehaviour {
 		Debug.Log ("shot reload upgraded");
 		playerShoot.instance.reloadTime *= 0.8f;
 	}
+
+	public void upgradeToDoubleShot(){
+		Debug.Log ("double shot upgraded");
+		playerShoot.instance.doubleShoot = true;
+	}
+
+	public void upgradeEngineForce(){
+		Debug.Log ("engine force upgraded");
+		playerMovement.instance.engineForce *= 1.5f;
+	}
+
+	public void upgradeTurningSpeed(){
+		Debug.Log ("turning speed upgraded");
+		playerMovement.instance.rotateSpeed *= 1.2f;
+	}
+
 }

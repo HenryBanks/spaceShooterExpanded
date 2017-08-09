@@ -8,8 +8,10 @@ public class playerShoot : MonoBehaviour {
 	private float timeToNextShot = 0.0f;
 	public GameObject shotPrefab;
 	public Transform shotFirePoint;
+	public Transform[] multipleShotFirePoints;
 	public float shotSpeed=50f;
 	public AudioSource shotSound;
+	public bool doubleShoot = false;
 
 	public static playerShoot instance;
 
@@ -22,7 +24,11 @@ public class playerShoot : MonoBehaviour {
 	void Update () {
 		
 		if (Input.GetKey(KeyCode.Space) && Time.time > timeToNextShot) {
-			Fire ();
+			if (doubleShoot) {
+				doubleFire ();
+			} else {
+				Fire ();
+			}
 		}
 		
 	}
@@ -32,6 +38,16 @@ public class playerShoot : MonoBehaviour {
 		timeToNextShot = Time.time + reloadTime;
 		var shot=Instantiate (shotPrefab, shotFirePoint.position,transform.rotation);
 		shot.GetComponent<Rigidbody2D> ().velocity = transform.up * shotSpeed;
+		shotSound.Play ();
+	}
+
+	void doubleFire(){
+		Debug.Log ("Double Fire");
+		timeToNextShot = Time.time + reloadTime;
+		for (int ii = 0; ii < multipleShotFirePoints.Length; ii++) {
+			var shot = Instantiate (shotPrefab, multipleShotFirePoints[ii].position, transform.rotation);
+			shot.GetComponent<Rigidbody2D> ().velocity = transform.up * shotSpeed;
+		}
 		shotSound.Play ();
 	}
 }

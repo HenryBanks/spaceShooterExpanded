@@ -22,7 +22,7 @@ public class playerMovement : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 		var relativeVelocity = transform.InverseTransformDirection (rb.velocity);
 		//Debug.Log (relativeVelocity);
 
