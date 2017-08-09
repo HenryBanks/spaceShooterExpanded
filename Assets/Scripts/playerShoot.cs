@@ -11,21 +11,27 @@ public class playerShoot : MonoBehaviour {
 	public float shotSpeed=50f;
 	public AudioSource shotSound;
 
+	public static playerShoot instance;
+
 	// Use this for initialization
 	void Start () {
-		
+		instance = this;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		
 		if (Input.GetKey(KeyCode.Space) && Time.time > timeToNextShot) {
-			Debug.Log ("Fire");
-			timeToNextShot = Time.time + reloadTime;
-			var shot=Instantiate (shotPrefab, shotFirePoint.position,transform.rotation);
-			shot.GetComponent<Rigidbody2D> ().velocity = transform.up * shotSpeed;
-			shotSound.Play ();
+			Fire ();
 		}
 		
+	}
+
+	void Fire(){
+		Debug.Log ("Fire");
+		timeToNextShot = Time.time + reloadTime;
+		var shot=Instantiate (shotPrefab, shotFirePoint.position,transform.rotation);
+		shot.GetComponent<Rigidbody2D> ().velocity = transform.up * shotSpeed;
+		shotSound.Play ();
 	}
 }

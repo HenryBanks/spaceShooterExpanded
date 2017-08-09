@@ -55,10 +55,12 @@
      <Compile Include="Assets\Scripts\enemy.cs" />
      <Compile Include="Assets\Scripts\meteor.cs" />
      <Compile Include="Assets\Scripts\moveShot.cs" />
+     <Compile Include="Assets\Scripts\pauseManager.cs" />
      <Compile Include="Assets\Scripts\playerDamage.cs" />
      <Compile Include="Assets\Scripts\playerMovement.cs" />
      <Compile Include="Assets\Scripts\playerScore.cs" />
      <Compile Include="Assets\Scripts\playerShoot.cs" />
+     <Compile Include="Assets\Scripts\upgrades.cs" />
      <None Include="Assets\SpaceShooterRedux\Spritesheet\sheet.xml" />
      <None Include="Assets\SpaceShooterRedux\license.txt" />
  <Reference Include="UnityEngine.UI">

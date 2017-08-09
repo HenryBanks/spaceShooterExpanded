@@ -12,8 +12,11 @@ public class playerMovement : MonoBehaviour {
 	private Rigidbody2D rb;
 	public SpriteRenderer engineRend;
 
+	public static playerMovement instance;
+
 	// Use this for initialization
 	void Start () {
+		instance = this;
 		rb = GetComponent<Rigidbody2D> ();
 		engineRend.enabled = false;
 	}

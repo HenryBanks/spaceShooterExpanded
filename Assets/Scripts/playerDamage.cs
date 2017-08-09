@@ -24,8 +24,11 @@ public class playerDamage : MonoBehaviour {
 
 	public Text shieldText;
 
+	public static playerDamage instance;
+
 	// Use this for initialization
 	void Start () {
+		instance = this;
 		currentHealth = maxHealth;
 		shieldRend.enabled = false;
 		InvokeRepeating ("updateShieldText",1.0f, 1.0f);
