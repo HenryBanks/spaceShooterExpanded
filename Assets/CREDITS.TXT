@@ -1,0 +1,37 @@
+Title:
+    Space Captain
+
+Author:
+    Justin Nichol
+
+URL:
+    https://opengameart.org/content/space-captain
+
+License(s):
+    * CC-BY-SA 3.0 ( http://creativecommons.org/licenses/by-sa/3.0/legalcode )
+
+File(s):
+    * Space_Captain.xcf
+    * Space_Captain.png
+
+----------------------------------------
+
+Title:
+    Starship Pilot
+
+Author:
+    Justin Nichol
+
+URL:
+    https://opengameart.org/content/starship-pilot
+
+License(s):
+    * CC-BY-SA 3.0 ( http://creativecommons.org/licenses/by-sa/3.0/legalcode )
+    * GPL 3.0 ( http://www.gnu.org/licenses/gpl-3.0.html )
+
+File(s):
+    * Pilot.xcf
+
+----------------------------------------
+
+

@@ -2,22 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class moveShot : MonoBehaviour {
+public class MoveShot : MonoBehaviour {
 	
 	public float moveSpeed=0.2f;
+	[SerializeField]
+	int shotDamage=20;
 
 	// Use this for initialization
 	void Start () {
 		Destroy (gameObject, 15f);
 	}
 
-	void OnTriggerEnter2D(Collider2D coll) {
-		if (coll.gameObject.CompareTag("meteor")||coll.gameObject.CompareTag("enemy")){
-			ItemManager.instance.itemList.Remove (coll.gameObject);
-			Destroy (coll.gameObject);
-			playerScore.instance.addScore (10);
+	void OnCollisionEnter2D(Collision2D coll) {
+		//Debug.Log (coll.gameObject.tag);
+		if (coll.gameObject.GetComponent<Destructible>()!=null){
+			coll.gameObject.GetComponent<Destructible> ().TakeDamage (shotDamage);
+		}else if(coll.gameObject.CompareTag("player")){
+			coll.gameObject.GetComponent<PlayerDamage> ().TakeDamage (shotDamage);
 		}
-		Debug.Log ("hit");
+		//Debug.Log ("hit");
 		Destroy (gameObject);
 	}
 

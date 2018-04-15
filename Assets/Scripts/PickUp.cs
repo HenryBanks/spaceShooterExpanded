@@ -13,4 +13,12 @@ public class PickUp : MonoBehaviour {
 	void Update () {
 		
 	}
+
+//	void OnTriggerEnter2D(Collision2D coll) {
+//		if (coll.gameObject.CompareTag ("Player")) {
+//			PlayerDamage.instance.RepairHull ();
+//		}
+//		Destroy (gameObject);
+//	}
+
 }

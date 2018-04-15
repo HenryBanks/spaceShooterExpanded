@@ -1,22 +1,21 @@
 # spaceShooter
 
-HOW TO PLAY
-W boosts forward
-A and D turn
-E activates shield for 2 seconds, 8 second recharge
-holding shift witll double acceleration
-SPACE fires
+Make your way through procedurally generated space, while avoiding a multitude of threats. Find pick-ups to repair hull.
 
-ADDED
-Procedural generation of items
-damage sprites
-shield
-healing items
+W-Move Forward
 
-TODO
-UI updates to indicate time to fire and shield
-Edit spawn rates
-Finish Enemy prefab, add to procedural generation script
+S-Move Backwards
 
-LONG TERM TODO
-Add upgrades/powerups
+A/D-Turn Left/Right
+
+E-Activate Overshield (You are invincible for the duration of the overshield)
+
+Mouse1-Fire Turret in direction of mouse pointer.
+
+Made with Kenney's Assets, portraits by Justin Nichol and music by Maxstack.
+
+http://opengameart.org/users/kenney
+http://opengameart.org/users/justin-nichol
+http://opengameart.org/users/maxstack
+
+Feedback is welcomed and encouraged.
